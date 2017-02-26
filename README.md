@@ -13,6 +13,7 @@ Just download the [ZIP](https://github.com/nearlg/relay-addon-kodi-service/archi
 
 Configuration
 -------------
-It use by default the GPIO port 18, where the relay is connected, but you can change it in the file *relay.sh* and *clientSocket.py*
+It use by default the GPIO port 18, where the relay is connected, and the net port 10001, but you can change it in the file *service.sh*
 	
+	PORT = 10001
 	GPIOPORT=18
