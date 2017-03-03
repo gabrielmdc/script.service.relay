@@ -2,7 +2,7 @@
 Sender module
 """
 import threading
-#import xbmc
+import xbmc
 
 class SenderThread(threading.Thread):
     """
@@ -23,5 +23,5 @@ class SenderThread(threading.Thread):
             except Exception as e:
                 # Clean up the connection
                 self.connection.close()
-                xbmc.executebuiltin('Notification(Relay Addon Service, ERROR: '+e.message +',1000,//storage/.kodi/addons/service.relay.master/icon.png)')
+                xbmc.executebuiltin('Notification(Relay Addon Service, ERROR: '+e.message+',1000,//storage/.kodi/addons/service.relay.master/icon.png)')
                 break

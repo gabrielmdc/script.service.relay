@@ -10,7 +10,7 @@ from receiver import ReceiverThread
 from supervisor import SupervisorThread
 from connection import Connection
 
-PORT = 10001
+PORT = 10000
 GPIOPORT = 18
 FILE_NAME = '/sys/class/gpio/gpio' + str(GPIOPORT) + '/value'
 
@@ -18,7 +18,7 @@ def set_up_gpio(gpio_port):
     """
     Prepare the gpio port to be used
     """
-    os.system("sh /storage/.kodi/addons/service.relay.master/relay.sh " + str(GPIOPORT))
+    os.system("sh /storage/.kodi/addons/service.relay.master/relay.sh " + str(gpio_port))
     #EXPORT_FILE = '/sys/class/gpio/export'
     #DIRECTION_FILE = '/sys/class/gpio/gpio'+str(gpio_port)+'/direction'
 
@@ -41,9 +41,8 @@ if __name__ == '__main__':
     sock.bind(server_address)
     # Listen for incoming connections
     sock.listen(1)
-
-    supervisor.start()
     set_up_gpio(GPIOPORT)
+    supervisor.start()
     while not monitor.abortRequested():
         try:
             # Wait for a connection
@@ -54,5 +53,5 @@ if __name__ == '__main__':
             break
 
     sock.close()
-    sys.exit(1) 
+sys.exit(1)
 

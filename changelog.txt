@@ -1,3 +1,4 @@
 1.0.0 Initial Release
 2.0.0 New version non compatible with the last one
 2.0.1 Fix a bug and set up the gpio port when start the system
+2.0.2 Fix a bug and change the port by defaulto to 10000

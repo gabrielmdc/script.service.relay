@@ -24,4 +24,3 @@ class Connection(threading.Thread):
 
         receiver.start()
         sender.start()
-        
