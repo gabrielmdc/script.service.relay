@@ -44,7 +44,6 @@ if __name__ == '__main__':
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     # Bind the socket to the port
     server_address = ('', PORT)
-    xbmc.log('[EEEYYYY] PORT: ' + str(PORT), xbmc.LOGDEBUG)
     sock.bind(server_address)
     # Listen for incoming connections
     sock.listen(1)
