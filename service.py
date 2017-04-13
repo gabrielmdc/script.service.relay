@@ -6,19 +6,25 @@ import threading
 import sys
 import xbmc
 import os
+import xbmcaddon
+sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/resources/lib")
 from receiver import ReceiverThread
 from supervisor import SupervisorThread
 from connection import Connection
 
-PORT = 10000
-GPIOPORT = 18
-FILE_NAME = '/sys/class/gpio/gpio' + str(GPIOPORT) + '/value'
+addon = xbmcaddon.Addon()
+PORT = int(addon.getSetting('PORT'))
+GPIO_PORT = int(addon.getSetting('GPIO_PORT'))
+GPIO_PATH = addon.getSetting('GPIO_PATH')
+GPIO_FILE_NAME = os.path.join(GPIO_PATH, 'gpio' + str(GPIO_PORT), 'value')
 
 def set_up_gpio(gpio_port):
     """
     Prepare the gpio port to be used
     """
-    os.system("sh /storage/.kodi/addons/service.relay/relay.sh " + str(gpio_port))
+    addonPath = addon.getAddonInfo("path")
+    scriptPath = os.path.join(addonPath, 'resources', 'lib', 'relay.sh')
+    os.system("sh " + scriptPath + " " + str(gpio_port))
     #EXPORT_FILE = '/sys/class/gpio/export'
     #DIRECTION_FILE = '/sys/class/gpio/gpio'+str(gpio_port)+'/direction'
 
@@ -31,17 +37,18 @@ if __name__ == '__main__':
     monitor = xbmc.Monitor()
 
     event = threading.Event()
-    ReceiverThread.FILE_NAME = FILE_NAME
-    supervisor = SupervisorThread(FILE_NAME, event)
+    ReceiverThread.FILE_NAME = GPIO_FILE_NAME
+    supervisor = SupervisorThread(GPIO_FILE_NAME, event)
 
     # Create a TCP/IP socket
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     # Bind the socket to the port
     server_address = ('', PORT)
+    xbmc.log('[EEEYYYY] PORT: ' + str(PORT), xbmc.LOGDEBUG)
     sock.bind(server_address)
     # Listen for incoming connections
     sock.listen(1)
-    set_up_gpio(GPIOPORT)
+    set_up_gpio(GPIO_PORT)
     supervisor.start()
     while not monitor.abortRequested():
         try:
