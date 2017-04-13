@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="script.service.relay"
        name="Relay service"
-       version="2.1.0"
+       version="2.1.1"
        provider-name="Near lg">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -18,9 +18,8 @@
 	<website></website>
 	<email>nearlg@gmail.com</email>
 	<source>https://github.com/nearlg/service.relay.master</source>
-	<news>2.0.4
-- Improve the package structure and some variables in service.py, ready for Kody 18.
-Add the posibiliy to change the ports in settings.</news>
+	<news>2.1.1
+- Fix small details.</news>
 	<assets>
 	    <icon>resources/icon.png</icon>
 	    <fanart></fanart>
