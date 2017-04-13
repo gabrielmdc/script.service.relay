@@ -18,7 +18,7 @@ def set_up_gpio(gpio_port):
     """
     Prepare the gpio port to be used
     """
-    os.system("sh /storage/.kodi/addons/service.relay.master/relay.sh " + str(gpio_port))
+    os.system("sh /storage/.kodi/addons/service.relay/relay.sh " + str(gpio_port))
     #EXPORT_FILE = '/sys/class/gpio/export'
     #DIRECTION_FILE = '/sys/class/gpio/gpio'+str(gpio_port)+'/direction'
 
