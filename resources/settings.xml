@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <settings>
     <category label="32001">
-        <setting label="Net port" type="number" id="PORT" default="10000"/>
-        <setting label="GPIO port" type="number" id="GPIO_PORT" default="18"/>
-        <setting label="GPIO path" type="text" id="GPIO_PATH" default="/sys/class/gpio"/>
+        <setting label="Socket port" type="number" id="SOCKET_PORT" default="10000"/>
+        <setting label="Data base file" type="text" id="DB_FILE" default="resources/gcrserver/resources/database.db"/>
     </category>
 </settings>

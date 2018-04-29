@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="script.service.relay"
        name="Relay service"
-       version="2.1.1"
+       version="3.0"
        provider-name="Near lg">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -9,7 +9,7 @@
   <extension point="xbmc.service" library="service.py" start="startup" />
   <extension point="xbmc.addon.metadata">
     <summary lang="en">Relay addon service</summary>
-	<description lang="en">Addon service to turn on/off a relay</description>
+	<description lang="en">Addon service to manage relays connected to a Raspberry Pi</description>
 	<disclaimer lang="en">For bugs, requests or general questions visit the GIT repository</disclaimer>
 	<language></language>
 	<platform>linux</platform>
@@ -17,9 +17,11 @@
 	<forum></forum>
 	<website></website>
 	<email>nearlg@gmail.com</email>
-	<source>https://github.com/nearlg/service.relay.master</source>
-	<news>2.1.1
-- Fix small details.</news>
+	<source>https://github.com/nearlg/gcr-server</source>
+	<news>3.0
+- Multiple relays support.
+- Better connection management
+	</news>
 	<assets>
 	    <icon>resources/icon.png</icon>
 	    <fanart></fanart>
