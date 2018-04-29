@@ -14,7 +14,8 @@ It allows to manage relays connected to a Raspberry Pi using Kodi.
 
 ## Installation
 
-Just download the [ZIP](https://github.com/nearlg/script.service.relay/archive/master.zip) , and install it using Kodi add-on installer.
+Just download the [ZIP](https://github.com/nearlg/script.service.relay/archive/master.zip),
+ and install it using Kodi add-on installer.
 
 ## Configuration
 
