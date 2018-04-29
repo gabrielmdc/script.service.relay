@@ -1,0 +1,3 @@
+[submodule "resources/gcrserver"]
+	path = resources/gcrserver
+	url = git@github.com:nearlg/gcr-server.git
