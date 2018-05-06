@@ -2,9 +2,11 @@
 Main program
 """
 import os
-import sys
 import socket
 import threading
+
+import sys
+
 from lib.connection import Connection
 from lib.supervisor import SupervisorThread
 from lib.repository.repositories import Repositories
@@ -49,6 +51,7 @@ class Main(object):
         and stop the supervisor
         :return: void
         """
+        print('Closing connections and threads...')
         self.__socket.close()
         self.__supervisor.stop()
 
@@ -67,7 +70,7 @@ class Main(object):
             try:
                 os.system(script)
             except Exception as e:
-                sys.stderr.write('On Gpio: ' + str(gpio.get_port()) + " " + str(e))
+                sys.stderr.write('On Gpio: ' + str(gpio.get_port()) + e.message)
 
     def __prepare_socket(self):
         """

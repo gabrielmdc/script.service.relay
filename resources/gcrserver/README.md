@@ -10,18 +10,16 @@ it is necessary a client program. Here is a [list of clients](#clients).
 - A Gnu/Linux system installed ([LibreELEC OS](https://libreelec.tv/)
  recommended, if you want to install this in a 
 different OS, please check the Gpio path in [the notes](#gpio-path))
-    - Python 3.x
-    - Systemd
+    - Python 2.7
 
-## Installation
+## Run
 Just download the [ZIP](https://github.com/nearlg/script.service.relay/archive/master.zip), 
-and run _/install.sh_ as superuser:
+and run _/service.py_:
 
 ```bash
-su
-./install.sh
+python service.py
 ```
-This will create a daemon in the system that is listening for new connections on the port 10000.
+This will be listening for new connections on the port 10000.
 
 ## Configuration
 It is necessary a client to add relays and configure their gpio ports.

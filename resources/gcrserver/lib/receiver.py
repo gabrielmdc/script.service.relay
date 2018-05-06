@@ -10,14 +10,13 @@ Protocol:
 ------------------
 """
 import threading
-import os
 import sys
 
-from .addaction import AddAction
-from .updateaction import UpdateAction
-from .deleteaction import DeleteAction
-from .supervisor import SupervisorThread
-from .models.gpio import Gpio
+from addaction import AddAction
+from deleteaction import DeleteAction
+from updateaction import UpdateAction
+from supervisor import SupervisorThread
+from models.gpio import Gpio
 
 
 class ReceiverThread(threading.Thread):
@@ -39,7 +38,7 @@ class ReceiverThread(threading.Thread):
             try:
                 msg = self.__connection.recv(32)
             except Exception as e:  # in case of the connection timeout exception for example
-                sys.stderr.write(str(e))
+                sys.stderr.write(e.message)
                 break
             if not msg:
                 break

@@ -5,9 +5,9 @@ import threading
 import sys
 import os
 
-from .models.gpio import Gpio
-from .repository.repositories import Repositories
-from .supervisor import SupervisorThread
+from models.gpio import Gpio
+from repository.repositories import Repositories
+from supervisor import SupervisorThread
 
 
 class AddAction(threading.Thread):
@@ -33,7 +33,7 @@ class AddAction(threading.Thread):
             AddAction.prepare_gpios([new_gpio])
             SupervisorThread.gpios.append(new_gpio)
         except Exception as e:
-            sys.stderr.write(str(e))
+            sys.stderr.write(e.message)
 
     @staticmethod
     def prepare_gpios(gpios):
@@ -50,4 +50,4 @@ class AddAction(threading.Thread):
             try:
                 os.system(script)
             except Exception as e:
-                sys.stderr.write('On Gpio: ' + str(gpio.get_port()) + " " + str(e))
+                sys.stderr.write('On Gpio: ' + str(gpio.get_port()) + e.message)

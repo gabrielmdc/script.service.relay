@@ -19,6 +19,8 @@
 	<email>nearlg@gmail.com</email>
 	<source>https://github.com/nearlg/gcr-server</source>
 	<news>3.0.1
+- Correct some issues
+3.0.0
 - Multiple relays support.
 - Better connection management
 	</news>

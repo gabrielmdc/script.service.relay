@@ -3,8 +3,7 @@ DeleteAction module
 """
 import threading
 import sys
-
-from .repository.repositories import Repositories
+from repository.repositories import Repositories
 
 
 class DeleteAction(threading.Thread):
@@ -29,4 +28,4 @@ class DeleteAction(threading.Thread):
             gpio_repo.delete_gpio_by_id(self.__gpio.get_id())
             self.__gpio.to_delete = True
         except Exception as e:
-            sys.stderr.write(str(e))
+            sys.stderr.write(e.message)
