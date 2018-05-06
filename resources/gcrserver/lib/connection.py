@@ -3,9 +3,9 @@ Connection module
 """
 import socket
 import threading
-from receiver import ReceiverThread
-from sender import SenderThread
-from supervisor import SupervisorThread
+from .receiver import ReceiverThread
+from .sender import SenderThread
+from .supervisor import SupervisorThread
 
 
 class Connection(threading.Thread):

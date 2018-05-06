@@ -13,11 +13,11 @@ import threading
 import os
 import sys
 
-from addaction import AddAction
-from deleteaction import DeleteAction
-from updateaction import UpdateAction
-from supervisor import SupervisorThread
-from models.gpio import Gpio
+from .addaction import AddAction
+from .updateaction import UpdateAction
+from .deleteaction import DeleteAction
+from .supervisor import SupervisorThread
+from .models.gpio import Gpio
 
 
 class ReceiverThread(threading.Thread):
@@ -39,7 +39,7 @@ class ReceiverThread(threading.Thread):
             try:
                 msg = self.__connection.recv(32)
             except Exception as e:  # in case of the connection timeout exception for example
-                sys.stderr.write(e.message)
+                sys.stderr.write(str(e))
                 break
             if not msg:
                 break
@@ -156,7 +156,7 @@ class ReceiverThread(threading.Thread):
         gpio = ReceiverThread.get_gpio_by_id(data[0])
         name = data[1]
         port = data[2]
-        inverted = data[3]
+        inverted = data[3] != '0'
         update_action = UpdateAction(self.__db_file, gpio, name, port, inverted)
         update_action.run()
         return True

@@ -3,7 +3,7 @@ Module Supervisor
 """
 import threading
 import sys
-from sender import SenderThread
+from .sender import SenderThread
 
 
 class SupervisorThread(threading.Thread):
@@ -46,7 +46,7 @@ class SupervisorThread(threading.Thread):
                     self.__event.set()
                     self.__event.clear()
             except Exception as e:
-                sys.stderr.write(e.message)
+                sys.stderr.write(str(e))
                 break
 
     def stop(self):

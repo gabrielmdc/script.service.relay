@@ -2,11 +2,9 @@
 Main program
 """
 import os
+import sys
 import socket
 import threading
-
-import sys
-
 from lib.connection import Connection
 from lib.supervisor import SupervisorThread
 from lib.repository.repositories import Repositories
@@ -51,7 +49,6 @@ class Main(object):
         and stop the supervisor
         :return: void
         """
-        print('Closing connections and threads...')
         self.__socket.close()
         self.__supervisor.stop()
 
@@ -65,12 +62,12 @@ class Main(object):
         for gpio in gpios:
             service_path = os.path.dirname(os.path.realpath(__file__))
             script_path = os.path.join(service_path, 'lib', 'gpio_setup.sh')
-            gpio_status = 'high' if gpio.is_inverted() else 'low'
+            gpio_status = '1' if gpio.is_inverted() else '0'
             script = "sh " + script_path + " " + str(gpio.get_port()) + " " + gpio_status
             try:
                 os.system(script)
             except Exception as e:
-                sys.stderr.write('On Gpio: ' + str(gpio.get_port()) + e.message)
+                sys.stderr.write('On Gpio: ' + str(gpio.get_port()) + " " + str(e))
 
     def __prepare_socket(self):
         """

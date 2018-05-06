@@ -5,9 +5,9 @@ import threading
 import sys
 import os
 
-from models.gpio import Gpio
-from repository.repositories import Repositories
-from supervisor import SupervisorThread
+from .models.gpio import Gpio
+from .repository.repositories import Repositories
+from .supervisor import SupervisorThread
 
 
 class AddAction(threading.Thread):
@@ -33,7 +33,7 @@ class AddAction(threading.Thread):
             AddAction.prepare_gpios([new_gpio])
             SupervisorThread.gpios.append(new_gpio)
         except Exception as e:
-            sys.stderr.write(e.message)
+            sys.stderr.write(str(e))
 
     @staticmethod
     def prepare_gpios(gpios):
@@ -45,9 +45,9 @@ class AddAction(threading.Thread):
         for gpio in gpios:
             service_path = os.path.dirname(os.path.realpath(__file__))
             script_path = os.path.join(service_path, 'gpio_setup.sh')
-            gpio_status = 'high' if gpio.is_inverted() else 'low'
+            gpio_status = '1' if gpio.is_inverted() else '0'
             script = "sh " + script_path + " " + str(gpio.get_port()) + " " + gpio_status
             try:
                 os.system(script)
             except Exception as e:
-                sys.stderr.write('On Gpio: ' + str(gpio.get_port()) + e.message)
+                sys.stderr.write('On Gpio: ' + str(gpio.get_port()) + " " + str(e))

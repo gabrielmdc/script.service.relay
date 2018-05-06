@@ -4,7 +4,7 @@ UpdateAction module
 import threading
 import sys
 
-from repository.repositories import Repositories
+from .repository.repositories import Repositories
 
 
 class UpdateAction(threading.Thread):
@@ -34,4 +34,4 @@ class UpdateAction(threading.Thread):
             self.__gpio.set_port(self.__port)
             self.__gpio.set_inverted(self.__inverted)
         except Exception as e:
-            sys.stderr.write(e.message)
+            sys.stderr.write(str(e))

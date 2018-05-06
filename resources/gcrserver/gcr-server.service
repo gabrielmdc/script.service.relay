@@ -1,0 +1,13 @@
+[Unit]
+Description=Deluge daemon
+After=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=python3 /usr/lib/gcr-server/daemon.py start
+ExecStop=python3 /usr/lib/gcr-server/daemon.py stop
+ExecReload=python3 /usr/lib/gcr-server/daemon.py restart
+
+[Install]
+WantedBy=multi-user.target

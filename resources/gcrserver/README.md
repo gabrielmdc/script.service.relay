@@ -10,16 +10,18 @@ it is necessary a client program. Here is a [list of clients](#clients).
 - A Gnu/Linux system installed ([LibreELEC OS](https://libreelec.tv/)
  recommended, if you want to install this in a 
 different OS, please check the Gpio path in [the notes](#gpio-path))
-    - Python 2.7
+    - Python 3.x
+    - Systemd
 
-## Run
+## Installation
 Just download the [ZIP](https://github.com/nearlg/script.service.relay/archive/master.zip), 
-and run _/service.py_:
+and run _/install.sh_ as superuser:
 
 ```bash
-python service.py
+su
+./install.sh
 ```
-This will be listening for new connections on the port 10000.
+This will create a daemon in the system that is listening for new connections on the port 10000.
 
 ## Configuration
 It is necessary a client to add relays and configure their gpio ports.
@@ -47,7 +49,7 @@ You can change it from _GPIO_DIRECTORY_NAME_ in _/lib/repository/gpio.py_
 ### Connect the relays
 This is an example about how to connect a relay to a Raspberry Pi.
 
-<img alt="Relay connection schema" title="Relay connection schema" src="doc/relay-connection-schema.jpeg" width="450" height="300">
+<img alt="Relay connection schema" title="Relay connection schema" src="docs/relay-connection-schema.jpeg" width="450" height="300">
 
 In this example the relay is connected on port Gpio 7.
 Now, from the client application, it is necessary to configure (only once, the first time), a relay connected on port _7_.
